@@ -1,16 +1,12 @@
-console.log("Hello from the JavaScript console!")
-const app = new PIXI.Application();
+import { Game } from "./Game.js";
 
-const resize = () => {
-    /* Resizing the canvas to the size of the window. */
-    app.renderer.resize(window.innerWidth, window.innerHeight);
-}
-window.addEventListener("resize", () => {
-    /* Resizing the canvas to the size of the window. */
-    resize();
-})
-/* Setting the position of the canvas to absolute. */
-app.renderer.view.style.position = 'absolute';
+const game = new Game();
+game.init();
+
+
 /* Adding the canvas to the body of the HTML document. */
-document.body.appendChild(app.view);
-resize();
+window.addEventListener("resize", () => {
+    game.resize();
+})
+game.resize();
+
