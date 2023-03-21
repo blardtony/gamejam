@@ -4,6 +4,11 @@ import { Cat } from "./Cat.js";
 const game = new Game();
 game.init();
 
+/*
+ console.log("Hello from the JavaScript console!")
+const app = new PIXI.Application();
+*/
+
 window.addEventListener("resize", () => {
     game.resize();
 })
