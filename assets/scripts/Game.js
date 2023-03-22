@@ -50,5 +50,4 @@ export class Game {
         // Update renderer  and navigation screens dimensions
         this.app.renderer.resize(width, height);
     }
-    
 }
