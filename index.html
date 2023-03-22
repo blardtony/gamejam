@@ -7,14 +7,26 @@
     <title>GameJam</title>
     <script src="https://pixijs.download/release/pixi.js"></script>
     <script type="module" src="assets/scripts/index.js" defer></script>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/style/style.css">
 </head>
 <body>
-    
+    <div id="game-start" class="game-div">
+        <div class="game-content">
+            <div>
+                <h1 id="game-title">GameJam</h1>
+                <h1 id="">Toucher l'écran pour commencer</h1>
+            </div>
+        </div>
+        <div id="game-hand">
+            <img  src="assets/img/hand.png" alt="hand">
+        </div>
+    </div>
+    <div id="game-over" class="game-div">
+        <div class="game-content">
+            <div>
+                <button id="game-start-button">download</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

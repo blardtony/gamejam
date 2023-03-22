@@ -1,0 +1,97 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.game-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    pointer-events: none;
+    z-index: 20;
+ }
+
+ .game-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    pointer-events: auto;
+    color: #fff;
+ }
+
+ .game-content div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+ }
+
+ #game-title {
+    font-size: 72px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+ }
+
+ #game-start-button {
+    background: #fff;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 0;
+ }
+
+ #game-over {
+    display: none;
+    background: rgba(0, 0, 0, 0.5);
+ }
+
+ #game-hand {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    pointer-events: none;
+    animation: translateXHand 1.2s infinite;
+ }
+
+ #game-hand img {
+    width: 100%;
+    height: 100%;
+ }
+
+ @keyframes translateXHand {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.4);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
