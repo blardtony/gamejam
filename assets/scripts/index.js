@@ -92,5 +92,22 @@ async function start() {
         }
         anim.x -= speed;
     });
+
+    const runSpeed = distance / (0.8 * 60);
+
+    setTimeout(runAway, 4000);
+
+    function runAway() {
+        game.app.ticker.add(() => {
+            if (anim.x < -100) {
+                // console.log(anim.x) need to check this
+                anim.stop();
+                return
+            }
+            anim.x -= runSpeed;
+        })
+    }
+    
+
 }
 
