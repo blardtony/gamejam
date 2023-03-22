@@ -39,33 +39,7 @@ gameStart.addEventListener("click", () => {
 });
 
 
-/**
- * Start method for the game
- */
-async function start() {
-
-    const bucketSpace = game.width / 4;
-    console.log(bucketSpace);
-    
-    const coneBucket = new Bucket('/assets/img/bunny.png', bucketSpace, game.height - 150, Cone);
-    game.app.stage.addChild(coneBucket.sprite);
-
-    const cupBucket = new Bucket('/assets/img/bunny.png', bucketSpace, game.height - 300, Cup);
-    game.app.stage.addChild(cupBucket.sprite);
-
-
-    const vanillaBucket = new Bucket('/assets/img/bunny.png', bucketSpace * 2, game.height - 150, VanillaScoop);
-    game.app.stage.addChild(vanillaBucket.sprite);
-
-    const chocolateBucket = new Bucket('/assets/img/bunny.png', bucketSpace * 2, game.height - 300, ChocolateScoop);
-    game.app.stage.addChild(chocolateBucket.sprite);
-
-
-    const sprinklesBucket = new Bucket('/assets/img/bunny.png', bucketSpace * 3, game.height - 150, Sprinkles);
-    game.app.stage.addChild(sprinklesBucket.sprite);
-
-    const chocolateChipsBucket = new Bucket('/assets/img/bunny.png', bucketSpace * 3, game.height - 300, ChocolateChips);
-    game.app.stage.addChild(chocolateChipsBucket.sprite);
+async function play() {
     /**
      * The cat object
      * @type {Cat}
@@ -112,6 +86,68 @@ async function start() {
 
     const runSpeed = distance / (0.8 * 60);
 
+    
+    /**
+     * The animation loop.
+     */
+
+    const catRunAway = () => {
+        if (anim.x < -100) {
+            anim.stop();
+            return;
+        }
+        anim.play();
+        anim.x -= runSpeed;
+
+    }
+
+    let seconds = 0;
+    const catReachMiddle = (delta) => {
+        if (anim.x < game.width / 2) {
+            seconds += (1 / 60) * delta;
+            anim.stop();
+            if (cat.iceCream.container && cat.iceCream.scoop && cat.iceCream.topping || seconds > 3) {
+                catRunAway();
+            }
+            return;
+        }
+        anim.play();
+        anim.x -= speed;
+    }
+    game.app.ticker.add(catReachMiddle);
+    return cat;
+}
+
+/**
+ * Start method for the game
+ */
+async function start() {
+
+    const bucketSpace = game.width / 4;
+    console.log(bucketSpace);
+    
+    const coneBucket = new Bucket('/assets/img/bunny.png', bucketSpace, game.height - 150, Cone);
+    game.app.stage.addChild(coneBucket.sprite);
+
+    const cupBucket = new Bucket('/assets/img/bunny.png', bucketSpace, game.height - 300, Cup);
+    game.app.stage.addChild(cupBucket.sprite);
+
+
+    const vanillaBucket = new Bucket('/assets/img/bunny.png', bucketSpace * 2, game.height - 150, VanillaScoop);
+    game.app.stage.addChild(vanillaBucket.sprite);
+
+    const chocolateBucket = new Bucket('/assets/img/bunny.png', bucketSpace * 2, game.height - 300, ChocolateScoop);
+    game.app.stage.addChild(chocolateBucket.sprite);
+
+
+    const sprinklesBucket = new Bucket('/assets/img/bunny.png', bucketSpace * 3, game.height - 150, Sprinkles);
+    game.app.stage.addChild(sprinklesBucket.sprite);
+
+    const chocolateChipsBucket = new Bucket('/assets/img/bunny.png', bucketSpace * 3, game.height - 300, ChocolateChips);
+    game.app.stage.addChild(chocolateChipsBucket.sprite);
+
+    const cat = await play(); 
+
     coneBucket.sprite.on('pointerdown', () => {
         cat.iceCream.addContainer(coneBucket.getItem());
         console.log(cat.iceCream.container);
@@ -141,33 +177,6 @@ async function start() {
         cat.iceCream.addTopping(chocolateChipsBucket.getItem());
         console.log(cat.iceCream.topping);
     });
-    /**
-     * The animation loop.
-     */
 
-    const catRunAway = () => {
-        if (anim.x < -100) {
-            anim.stop();
-            return;
-        }
-        anim.play();
-        anim.x -= runSpeed;
-
-    }
-
-    let seconds = 0;
-    const catReachMiddle = (delta) => {
-        if (anim.x < game.width / 2) {
-            seconds += (1 / 60) * delta;
-            anim.stop();
-            if (cat.iceCream.container && cat.iceCream.scoop && cat.iceCream.topping || seconds > 3) {
-                catRunAway();
-            }
-            return;
-        }
-        anim.play();
-        anim.x -= speed;
-    }
-    game.app.ticker.add(catReachMiddle);
 }
 
