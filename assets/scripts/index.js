@@ -29,7 +29,7 @@ gameStart.addEventListener("click", () => {
     gameStart.style.display = "none";
     setTimeout(() => {
         gameOver.style.display = "block";
-    }   , 1000);
+    }   , 10000);
     start()
 });
 
