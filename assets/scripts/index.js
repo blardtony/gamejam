@@ -39,7 +39,6 @@ gameStart.addEventListener("click", () => {
   start();
 });
 
-
 /**
  * Start method for the game
  */
@@ -147,7 +146,13 @@ async function start() {
     // console.log(anim.x)
     if (anim.x < -100) {
       anim.stop();
-      // game.app.stage.removeChild(anim);
+      if (
+        cat.iceCream.container &&
+        cat.iceCream.scoop &&
+        cat.iceCream.topping
+      ) {
+        score += 1;
+      }
       cat = new Cat(game.width / 1, game.height / 2, 0.1666);
       anim = await cat.getAnimationSprite();
       game.app.stage.addChild(anim);
