@@ -19,3 +19,18 @@ const anim = await cat.getAnimationSprite();
 anim.play();
 // add it to the stage to render
 game.app.stage.addChild(anim);
+
+// Make the anim interactive
+anim.interactive = true;
+
+// Set interactions on our anim 
+anim
+    .on('mousedown', onButtonDown)
+    .on('touchstart', onButtonDown)
+    
+function onButtonDown() {
+    // Change the texture to animHurt
+    anim.x = game.width / Math.floor(Math.random() * 10);
+    anim.y = game.height / Math.floor(Math.random() * 10);
+    console.log("here")
+}

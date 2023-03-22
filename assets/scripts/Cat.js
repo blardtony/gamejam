@@ -28,4 +28,5 @@ export class Cat {
         anim.animationSpeed = 0.1666;
         return anim;
     }
+
 }
