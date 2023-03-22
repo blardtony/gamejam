@@ -1,5 +1,9 @@
 import { Game } from "./Game.js";
 import { Cat } from "./Cat.js";
+import { VanillaScoop, ChocolateScoop } from "./Scoop.js";
+import { Cone, Cup } from "./Container.js";
+import { Sprinkles, ChocolateChips } from "./Topping.js";
+import { IceCream } from "./IceCream.js";
 
 const game = new Game();
 /**
@@ -38,6 +42,45 @@ gameStart.addEventListener("click", () => {
  * Start method for the game
  */
 async function start() {
+    const vanillaScoop = new VanillaScoop();
+
+    const chocolateScoop = new ChocolateScoop();
+
+    const iceCream = new IceCream();
+
+    const vanillaBucket = PIXI.Sprite.from('/assets/img/bunny.png');
+    vanillaBucket.x = 250;
+    vanillaBucket.y = game.height - 150;
+    // Opt-in to interactivity
+    vanillaBucket.interactive = true;
+    // Shows hand cursor
+    vanillaBucket.buttonMode = true;
+    vanillaBucket.on('pointerdown', () => {
+        if (iceCream.scoop === null) {
+            iceCream.addScoop(vanillaScoop);
+            console.log(iceCream);
+        }
+    });
+
+    game.app.stage.addChild(vanillaBucket);
+
+    const chocolateBucket = PIXI.Sprite.from('/assets/img/bunny.png');
+    chocolateBucket.x = 150;
+    chocolateBucket.y = game.height - 150;
+    // Opt-in to interactivity
+    chocolateBucket.interactive = true;
+    // Shows hand cursor
+    chocolateBucket.buttonMode = true;
+    chocolateBucket.on('pointerdown', () => {
+        if (iceCream.scoop === null) {
+            iceCream.addScoop(chocolateScoop);
+            console.log(iceCream);
+        }
+    });
+
+    game.app.stage.addChild(chocolateBucket);
+
+    console.log(iceCream);
     /**
      * The cat object
      * @type {Cat}
