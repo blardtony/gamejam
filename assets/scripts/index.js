@@ -34,6 +34,8 @@ gameStart.addEventListener("click", () => {
     gameStart.style.display = "none";
     setTimeout(() => {
         gameOver.style.display = "block";
+        game.app.ticker.destroy();
+        // game.app.stage.removeChildren();
     }   , 10000);
     start()
 });
@@ -47,13 +49,13 @@ async function play() {
      * @param {Number} y The y position of the cat.
      * @param {Number} scale The scale of the cat.
      */
-    const cat = new Cat(game.width / 1, game.height / 2, 0.1666);
+    let cat = new Cat(game.width / 1, game.height / 2, 0.1666);
 
     /**
      * The animation sprite of the cat.
      * @type {PIXI.AnimatedSprite}
      */
-    const anim = await cat.getAnimationSprite();
+    let anim = await cat.getAnimationSprite();
 
     /**
      * Play the animation.
@@ -91,23 +93,30 @@ async function play() {
      * The animation loop.
      */
 
-    const catRunAway = () => {
+    const catRunAway = async () => {
+        // console.log(anim.x)
         if (anim.x < -100) {
             anim.stop();
+            // game.app.stage.removeChild(anim);
+            cat = new Cat(game.width / 1, game.height / 2, 0.1666);
+            anim = await cat.getAnimationSprite();
+            game.app.stage.addChild(anim);
+            seconds = 0;
             return;
         }
         anim.play();
         anim.x -= runSpeed;
-
     }
 
     let seconds = 0;
-    const catReachMiddle = (delta) => {
+    const catReachMiddle = async (delta) => {
+        // console.log(anim.x)
         if (anim.x < game.width / 2) {
             seconds += (1 / 60) * delta;
             anim.stop();
             if (cat.iceCream.container && cat.iceCream.scoop && cat.iceCream.topping || seconds > 3) {
                 catRunAway();
+                return;
             }
             return;
         }
@@ -124,7 +133,6 @@ async function play() {
 async function start() {
 
     const bucketSpace = game.width / 4;
-    console.log(bucketSpace);
     
     const coneBucket = new Bucket('/assets/img/bunny.png', bucketSpace, game.height - 150, Cone);
     game.app.stage.addChild(coneBucket.sprite);
@@ -146,8 +154,9 @@ async function start() {
     const chocolateChipsBucket = new Bucket('/assets/img/bunny.png', bucketSpace * 3, game.height - 300, ChocolateChips);
     game.app.stage.addChild(chocolateChipsBucket.sprite);
 
-    const cat = await play(); 
 
+    const cat = await play();
+    
     coneBucket.sprite.on('pointerdown', () => {
         cat.iceCream.addContainer(coneBucket.getItem());
         console.log(cat.iceCream.container);
