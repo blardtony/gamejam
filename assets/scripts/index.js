@@ -2,17 +2,29 @@ import { Game } from "./Game.js";
 import { Cat } from "./Cat.js";
 
 const game = new Game();
+/**
+ * Initialize the game
+ */
 game.init();
 
+
+/**
+ * Resize the game
+ */
 window.addEventListener("resize", () => {
     game.resize();
 })
 game.resize();
 
+/**
+ * Get the game start and game over screens
+ */
 const gameStart = document.querySelector("#game-start");
-console.log(gameStart);
-
 const gameOver = document.querySelector("#game-over");
+
+/**
+ * Start the game
+ */
 gameStart.addEventListener("click", () => {
     gameStart.style.display = "none";
     setTimeout(() => {
@@ -22,41 +34,63 @@ gameStart.addEventListener("click", () => {
 });
 
 
-// After 10 seconds display the game over screen
+/**
+ * Start method for the game
+ */
 async function start() {
+    /**
+     * The cat object
+     * @type {Cat}
+     * @param {Number} x The x position of the cat.
+     * @param {Number} y The y position of the cat.
+     * @param {Number} scale The scale of the cat.
+     */
     const cat = new Cat(game.width / 1, game.height / 2, 0.1666);
+
+    /**
+     * The animation sprite of the cat.
+     * @type {PIXI.AnimatedSprite}
+     */
     const anim = await cat.getAnimationSprite();
+
+    /**
+     * Play the animation.
+     * @method PIXI.AnimatedSprite#play
+     */
     anim.play();
 
-    // add it to the stage to render
+    /**
+     * Add the animation to the stage.
+     * @method PIXI.Container#addChild
+     * @param {PIXI.AnimatedSprite} anim The animation sprite.
+     */
     game.app.stage.addChild(anim);
 
-    // Make the anim interactive
+
+    /**
+     * Make the animation interactive.
+     * @property PIXI.AnimatedSprite#interactive
+     */
     anim.interactive = true;
 
-    requestAnimationFrame(update);
+    /**
+     * The distance between the anim and the center of the screen.
+     */
+    const distance = anim.x - game.width / 2;
+    /**
+     * The speed of the anim.
+     */
+    const speed = distance / (2.5 * 60);
 
-    function update() {
-
+    /**
+     * The animation loop.
+     */
+    game.app.ticker.add(() => {
         if (anim.x < game.width / 2) {
             anim.stop();
             return
         }
-        anim.x -= 3;
-        requestAnimationFrame(update);
-
-        console.log("test")
-    }
-
-
-    // Set interactions on our anim 
-    anim
-        .on('mousedown', onButtonDown)
-        .on('touchstart', onButtonDown)
-        
-    function onButtonDown() {
-        anim.x = game.width / Math.floor(Math.random() * 10);
-        anim.y = game.height / Math.floor(Math.random() * 10);
-    }
+        anim.x -= speed;
+    });
 }
 
