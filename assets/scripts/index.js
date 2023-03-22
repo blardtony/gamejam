@@ -125,31 +125,29 @@ async function start() {
      */
     const speed = distance / (2.5 * 60);
 
+    const runSpeed = distance / (0.8 * 60);
+
     /**
      * The animation loop.
      */
     game.app.ticker.add(() => {
         if (anim.x < game.width / 2) {
             anim.stop();
-            return
+            setTimeout(runAway, 2000);
+            function runAway() {
+                anim.play();
+                anim.x -= runSpeed;
+                if (anim.x < -100) {
+                    anim.stop();
+                    return;
+                }
+            }
+            return;
+
         }
         anim.x -= speed;
     });
 
-    const runSpeed = distance / (0.8 * 60);
-
-    setTimeout(runAway, 4000);
-
-    function runAway() {
-        game.app.ticker.add(() => {
-            if (anim.x < -100) {
-                // console.log(anim.x) need to check this
-                anim.stop();
-                return
-            }
-            anim.x -= runSpeed;
-        })
-    }
     
 
 }
