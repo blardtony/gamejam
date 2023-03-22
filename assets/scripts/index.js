@@ -42,11 +42,45 @@ gameStart.addEventListener("click", () => {
  * Start method for the game
  */
 async function start() {
+    const cone = new Cone();
+    const cup = new Cup();
     const vanillaScoop = new VanillaScoop();
-
     const chocolateScoop = new ChocolateScoop();
-
+    const sprinkles = new Sprinkles();
+    const chocolateChips = new ChocolateChips();
     const iceCream = new IceCream();
+
+    const coneBucket = PIXI.Sprite.from('/assets/img/bunny.png');
+    coneBucket.x = 150;
+    coneBucket.y = game.height - 50;
+    // Opt-in to interactivity
+    coneBucket.interactive = true;
+    // Shows hand cursor
+    coneBucket.buttonMode = true;
+    coneBucket.on('pointerdown', () => {
+        if (iceCream.container === null) {
+            iceCream.addContainer(cone);
+            console.log(iceCream);
+        }
+    });
+
+    game.app.stage.addChild(coneBucket);
+
+    const cupBucket = PIXI.Sprite.from('/assets/img/bunny.png');
+    cupBucket.x = 150;
+    cupBucket.y = game.height - 150;
+    // Opt-in to interactivity
+    cupBucket.interactive = true;
+    // Shows hand cursor
+    cupBucket.buttonMode = true;
+    cupBucket.on('pointerdown', () => {
+        if (iceCream.container === null) {
+            iceCream.addContainer(cup);
+            console.log(iceCream);
+        }
+    });
+
+    game.app.stage.addChild(cupBucket);
 
     const vanillaBucket = PIXI.Sprite.from('/assets/img/bunny.png');
     vanillaBucket.x = 250;
@@ -56,7 +90,7 @@ async function start() {
     // Shows hand cursor
     vanillaBucket.buttonMode = true;
     vanillaBucket.on('pointerdown', () => {
-        if (iceCream.scoop === null) {
+        if (iceCream.container !== null && iceCream.scoop === null) {
             iceCream.addScoop(vanillaScoop);
             console.log(iceCream);
         }
@@ -65,14 +99,14 @@ async function start() {
     game.app.stage.addChild(vanillaBucket);
 
     const chocolateBucket = PIXI.Sprite.from('/assets/img/bunny.png');
-    chocolateBucket.x = 150;
-    chocolateBucket.y = game.height - 150;
+    chocolateBucket.x = 250;
+    chocolateBucket.y = game.height - 50;
     // Opt-in to interactivity
     chocolateBucket.interactive = true;
     // Shows hand cursor
     chocolateBucket.buttonMode = true;
     chocolateBucket.on('pointerdown', () => {
-        if (iceCream.scoop === null) {
+        if (iceCream.container !== null && iceCream.scoop === null) {
             iceCream.addScoop(chocolateScoop);
             console.log(iceCream);
         }
@@ -80,7 +114,37 @@ async function start() {
 
     game.app.stage.addChild(chocolateBucket);
 
-    console.log(iceCream);
+
+    const sprinklesBucket = PIXI.Sprite.from('/assets/img/bunny.png');
+    sprinklesBucket.x = 350;
+    sprinklesBucket.y = game.height - 50;
+    // Opt-in to interactivity
+    sprinklesBucket.interactive = true;
+    // Shows hand cursor
+    sprinklesBucket.buttonMode = true;
+    sprinklesBucket.on('pointerdown', () => {
+        if (iceCream.container !== null && iceCream.scoop !== null && iceCream.topping === null) {
+            iceCream.addTopping(sprinkles);
+            console.log(iceCream);
+        }
+    });
+    game.app.stage.addChild(sprinklesBucket);
+
+    const chocolateChipsBucket = PIXI.Sprite.from('/assets/img/bunny.png');
+    chocolateChipsBucket.x = 350;
+    chocolateChipsBucket.y = game.height - 150;
+    // Opt-in to interactivity
+    chocolateChipsBucket.interactive = true;
+    // Shows hand cursor
+    chocolateChipsBucket.buttonMode = true;
+    chocolateChipsBucket.on('pointerdown', () => {
+        if (iceCream.container !== null && iceCream.scoop !== null && iceCream.topping === null) {
+            iceCream.addTopping(chocolateChips);
+            console.log(iceCream);
+        }
+    });
+
+    game.app.stage.addChild(chocolateChipsBucket);
     /**
      * The cat object
      * @type {Cat}
