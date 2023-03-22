@@ -6,14 +6,17 @@ export class IceCream {
     }
     
     addScoop = (scoop) => {
-        this.scoop = scoop;
+        if (this.container !== null && this.scoop === null)
+            this.scoop = scoop;
     }
 
     addContainer = (container) => {
-        this.container = container;
+        if (this.container === null)
+            this.container = container;
     }
 
     addTopping = (topping) => {
-        this.topping = topping;
+        if (this.container !== null && this.scoop !== null && this.topping === null)
+            this.topping = topping;
     }
 }

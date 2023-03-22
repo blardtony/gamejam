@@ -1,9 +1,11 @@
+import { IceCream } from "./IceCream.js";
 
 export class Cat {
     constructor(x, y, animationSpeed) {
         this.x = x;
         this.y = y;
         this.animationSpeed = animationSpeed;
+        this.iceCream = new IceCream();
     }
 
     async getAnimationSprite() {
