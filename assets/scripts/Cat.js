@@ -28,13 +28,4 @@ export class Cat {
         anim.animationSpeed = 0.1666;
         return anim;
     }
-
-    // async playAnimation() {
-    //     const anim = await this.getAnimationSprite();
-    //     // set the animation speed 
-    //     anim.animationSpeed = this.animationSpeed;
-
-    //     // play the animation on a loop
-    //     anim.play();
-    // }
 }
