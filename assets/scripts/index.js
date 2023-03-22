@@ -3,7 +3,6 @@ import { Cat } from "./Cat.js";
 import { VanillaScoop, ChocolateScoop } from "./Scoop.js";
 import { Cone, Cup } from "./Container.js";
 import { Sprinkles, ChocolateChips } from "./Topping.js";
-import { IceCream } from "./IceCream.js";
 import { Bucket } from "./Bucket.js";
 
 const game = new Game();

@@ -12,7 +12,8 @@ export class Cat {
         // const loader = PIXI.Loader.shared;
         const sheet = await PIXI.Assets.load('assets/img/cats.json');
         // console.log(sheet.data.meta.image);
-        const texture = await PIXI.Texture.from('assets/img/cats.png');
+        const cats = ['assets/img/cats.png', 'assets/img/garfield.png', 'assets/img/po.png'];
+        const texture = await PIXI.Texture.from(cats[Math.floor(Math.random() * 1000) % 3]);
         // console.log(texture);
         const spritesheet = new PIXI.Spritesheet(
             texture,
