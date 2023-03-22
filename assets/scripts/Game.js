@@ -16,7 +16,8 @@ export class Game {
             backgroundColor: 0x522652,
             resolution: window.devicePixelRatio || 1,
         });
-
+        this.width = window.innerWidth;
+        this.height = window.innerHeight;
     }
 
     init = () => {
