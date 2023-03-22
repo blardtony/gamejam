@@ -95,3 +95,12 @@ body {
         transform: scale(1);
     }
 }
+
+#game-over-button-group {
+   display: flex;
+   flex-direction: column;
+}
+
+#game-over-button-group button {
+   margin-bottom: 20px;
+}
