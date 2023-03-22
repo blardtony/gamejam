@@ -9,7 +9,7 @@ window.addEventListener("resize", () => {
 })
 game.resize();
 
-const cat = new Cat(game.width / 2, game.height / 2, 0.1666);
+const cat = new Cat(game.width / 1, game.height / 2, 0.1666);
 const anim = await cat.getAnimationSprite();
 anim.play();
 
@@ -18,6 +18,21 @@ game.app.stage.addChild(anim);
 
 // Make the anim interactive
 anim.interactive = true;
+
+requestAnimationFrame(update);
+
+function update() {
+
+    if (anim.x < game.width / 2) {
+        anim.stop();
+        return
+    }
+    anim.x -= 3;
+    requestAnimationFrame(update);
+
+    console.log("test")
+}
+
 
 // Set interactions on our anim 
 anim
