@@ -36,7 +36,7 @@ game.resize();
  */
 const gameStart = document.querySelector("#game-start");
 const gameOver = document.querySelector("#game-over");
-
+const gameRetryButton = document.querySelector("#game-retry-button");
 /**
  * Start the game
  */
@@ -45,9 +45,13 @@ gameStart.addEventListener("click", () => {
   setTimeout(() => {
     gameOver.style.display = "block";
     game.app.ticker.destroy();
-    // game.app.stage.removeChildren();
-  }, 1000000);
+  }, 10000);
   start();
+});
+
+gameRetryButton.addEventListener("click", () => {
+    //Reload the page
+    location.reload();
 });
 
 /**

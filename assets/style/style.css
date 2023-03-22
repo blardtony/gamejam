@@ -49,7 +49,7 @@ body {
     margin-bottom: 20px;
  }
 
- #game-start-button {
+ .game-start-button {
     background: #fff;
     color: #000;
     margin: 10px;
