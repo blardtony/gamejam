@@ -7,6 +7,17 @@ import { Bucket } from "./Bucket.js";
 
 const game = new Game();
 let score = 0;
+
+const scoreText = new PIXI.Text("Score: " + score, {
+    fontFamily: "Arial",
+    fontSize: 24,
+    fill: "white",
+    align: "center",
+});
+scoreText.x = game.width / 2 - scoreText.width / 2;
+scoreText.y = 50;
+game.app.stage.addChild(scoreText);
+
 /**
  * Initialize the game
  */
@@ -152,6 +163,7 @@ async function start() {
         cat.iceCream.topping
       ) {
         score += 1;
+        scoreText.text = "Score: " + score;
       }
       cat = new Cat(game.width / 1, game.height / 2, 0.1666);
       anim = await cat.getAnimationSprite();
