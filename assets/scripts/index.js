@@ -84,6 +84,8 @@ gameRetryButton.addEventListener("click", () => {
  * Start method for the game
  */
 async function start() {
+    const sound = PIXI.sound.Sound.from('assets/sound.wav');
+    sound.play();
   const bucketSpace = game.width / 4;
 
   const coneBucket = new Bucket(
@@ -218,6 +220,9 @@ async function start() {
 
   let seconds = 0;
   const catReachMiddle = async (delta) => {
+    if (!sound.isPlaying){
+        sound.play();
+    }
     iceCreamText.text = `IceCream ${cat.iceCream.container?.constructor?.name}/${cat.iceCream.scoop?.constructor.name}/${cat.iceCream.topping?.constructor.name}`;
     if (anim.x < game.width / 2) {
       seconds += (1 / 60) * delta;
