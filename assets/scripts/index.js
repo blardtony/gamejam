@@ -17,14 +17,23 @@ const scoreText = new PIXI.Text("Score: " + score, {
 scoreText.x = game.width / 2 - scoreText.width / 2;
 scoreText.y = 50;
 
-const iceCreamNeededText = new PIXI.Text("IceCream: ", {
+const iceCreamNeededText = new PIXI.Text("IceCreamNeeded: ", {
     fontFamily: "Arial",
     fontSize: 25,
     fill: "black",
     align: "center",
   });
-  iceCreamNeededText.x = 150;
-  iceCreamNeededText.y = 150;
+  iceCreamNeededText.x = 80;
+  iceCreamNeededText.y = 120;
+
+  const iceCreamText = new PIXI.Text("IceCream: ", {
+    fontFamily: "Arial",
+    fontSize: 25,
+    fill: "black",
+    align: "center",
+  });
+  iceCreamText.x = 80;
+  iceCreamText.y = 150;
 /**
  * Initialize the game
  */
@@ -32,6 +41,7 @@ game.init();
 
 game.app.stage.addChild(scoreText);
 game.app.stage.addChild(iceCreamNeededText);
+game.app.stage.addChild(iceCreamText);
 
 /**
  * Resize the game
@@ -142,7 +152,8 @@ async function start() {
    */
   let anim = await cat.getAnimationSprite();
 
-  iceCreamNeededText.text = `Container ${cat.iceCreamNeeded.container.constructor.name} Scoop ${cat.iceCreamNeeded.scoop.constructor.name} Topping ${cat.iceCreamNeeded.topping.constructor.name}`;
+  iceCreamNeededText.text = `IceCreamNeeded ${cat.iceCreamNeeded.container.constructor.name}/${cat.iceCreamNeeded.scoop.constructor.name}/${cat.iceCreamNeeded.topping.constructor.name}`;
+  iceCreamText.text = `IceCream ${cat.iceCream.container?.constructor?.name}/${cat.iceCream.scoop?.constructor.name}/${cat.iceCream.topping?.constructor.name}`;
 
   /**
    * Play the animation.
@@ -182,11 +193,7 @@ async function start() {
     // console.log(anim.x)
     if (anim.x < -100) {
       anim.stop();
-      if (
-        cat.iceCream.container &&
-        cat.iceCream.scoop &&
-        cat.iceCream.topping
-      ) {
+      if (checkIceCream(cat)) {
         score += 1;
         scoreText.text = "Score: " + score;
       }
@@ -203,14 +210,13 @@ async function start() {
 
   let seconds = 0;
   const catReachMiddle = async (delta) => {
-    console.log(cat.iceCreamNeeded.container.constructor.name);
+
+  iceCreamText.text = `IceCream ${cat.iceCream.container?.constructor?.name}/${cat.iceCream.scoop?.constructor.name}/${cat.iceCream.topping?.constructor.name}`;
     if (anim.x < game.width / 2) {
       seconds += (1 / 60) * delta;
       anim.stop();
       if (
-        (cat.iceCream.container?.constructor.name == cat.iceCreamNeeded.container.constructor.name &&
-          cat.iceCream.scoop?.constructor.name == cat.iceCreamNeeded.scoop.constructor.name &&
-          cat.iceCream.topping?.constructor.name== cat.iceCreamNeeded.topping.constructor.name) ||
+        (checkIceCream(cat)) ||
         seconds > 3
       ) {
         catRunAway();
@@ -253,4 +259,10 @@ async function start() {
     cat.iceCream.addTopping(chocolateChipsBucket.getItem());
     console.log(cat.iceCream.topping);
   });
+}
+
+const checkIceCream = (cat) => {
+    return cat.iceCream.container?.constructor.name === cat.iceCreamNeeded.container.constructor.name &&
+          cat.iceCream.scoop?.constructor.name === cat.iceCreamNeeded.scoop.constructor.name &&
+          cat.iceCream.topping?.constructor.name === cat.iceCreamNeeded.topping.constructor.name
 }
