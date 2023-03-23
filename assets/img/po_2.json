@@ -1,6 +1,6 @@
 {
 	"frames": {
-		"cat1.png": {
+		"po1.png": {
 			"frame": {
 				"x": 1,
 				"y": 1,
@@ -20,7 +20,7 @@
 				"h": 777
 			}
 		},
-		"cat2.png": {
+		"po2.png": {
 			"frame": {
 				"x": 780,
 				"y": 1,
@@ -40,7 +40,7 @@
 				"h": 777
 			}
 		},
-		"cat3.png": {
+		"po3.png": {
 			"frame": {
 				"x": 1,
 				"y": 780,
@@ -60,7 +60,7 @@
 				"h": 777
 			}
 		},
-		"cat4.png": {
+		"po4.png": {
 			"frame": {
 				"x": 780,
 				"y": 780,
@@ -80,7 +80,7 @@
 				"h": 777
 			}
 		},
-		"cat_afraid.png": {
+		"po_afraid.png": {
 			"frame": {
 				"x": 1559,
 				"y": 1,
@@ -102,17 +102,17 @@
 		}
 	},
 	"animations": {
-        "cats": ["cat_afraid.png", "cat1.png","cat2.png", "cat3.png", "cat4.png"]
+        "cats": ["po_afraid.png", "po1.png","po2.png", "po3.png", "po4.png"]
     },
 	"meta": {
 		"app": "http://www.codeandweb.com/texturepacker",
 		"version": "1.0",
-		"image": "cats.png",
+		"image": "po_2.png",
 		"format": "RGBA8888",
 		"size": {
 			"w": 2337,
 			"h": 1558
 		},
-		"scale": "1"
+		"scale": "5"
 	}
 }

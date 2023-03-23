@@ -21,9 +21,10 @@ export class Cat {
 
     async getAnimationSprite() {
         // const loader = PIXI.Loader.shared;
-        const sheet = await PIXI.Assets.load('assets/img/cats.json');
+        const sheet = await PIXI.Assets.load('assets/img/po_2.json');
         // console.log(sheet.data.meta.image);
-        const cats = ['assets/img/cats.png', 'assets/img/garfield.png', 'assets/img/po.png'];
+        const cats = ['assets/img/cats.png', 'assets/img/garfield_2.png', 'assets/img/po_2.png'];
+        // const texture = await PIXI.Texture.from(cats[2]);
         const texture = await PIXI.Texture.from(cats[Math.floor(Math.random() * 1000) % 3]);
         // console.log(texture);
         const spritesheet = new PIXI.Spritesheet(
@@ -34,7 +35,7 @@ export class Cat {
         await spritesheet.parse();
 
         // spritesheet is ready to use!
-        // console.log(spritesheet.animations.cats);
+        console.log(spritesheet.animations.cats);
         const anim=  new PIXI.AnimatedSprite(spritesheet.animations.cats);
         anim.x = this.x;
         anim.y = this.y;

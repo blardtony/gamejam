@@ -18,22 +18,22 @@ scoreText.x = game.width / 2 - scoreText.width / 2;
 scoreText.y = 50;
 
 const iceCreamNeededText = new PIXI.Text("IceCreamNeeded: ", {
-    fontFamily: "Arial",
-    fontSize: 25,
-    fill: "black",
-    align: "center",
-  });
-  iceCreamNeededText.x = 80;
-  iceCreamNeededText.y = 120;
+  fontFamily: "Arial",
+  fontSize: 25,
+  fill: "black",
+  align: "center",
+});
+iceCreamNeededText.x = 80;
+iceCreamNeededText.y = 120;
 
-  const iceCreamText = new PIXI.Text("IceCream: ", {
-    fontFamily: "Arial",
-    fontSize: 25,
-    fill: "black",
-    align: "center",
-  });
-  iceCreamText.x = 80;
-  iceCreamText.y = 150;
+const iceCreamText = new PIXI.Text("IceCream: ", {
+  fontFamily: "Arial",
+  fontSize: 25,
+  fill: "black",
+  align: "center",
+});
+iceCreamText.x = 80;
+iceCreamText.y = 150;
 /**
  * Initialize the game
  */
@@ -160,6 +160,7 @@ async function start() {
    * @method PIXI.AnimatedSprite#play
    */
   anim.play();
+  console.log(anim.textures)
 
   /**
    * Add the animation to the stage.
@@ -190,7 +191,6 @@ async function start() {
    */
 
   const catRunAway = async () => {
-    // console.log(anim.x)
     if (anim.x < -100) {
       anim.stop();
       if (checkIceCream(cat)) {
@@ -204,25 +204,32 @@ async function start() {
       seconds = 0;
       return;
     }
+    if (seconds > 3 && seconds <= 3.3 && !checkIceCream(cat)) {
+        anim.gotoAndStop(0);
+        return
+    }
+    if (seconds > 3.3 && anim.currentFrame == 0) {
+        anim.gotoAndPlay(1)
+        return
+    }
     anim.play();
     anim.x -= runSpeed;
   };
 
   let seconds = 0;
   const catReachMiddle = async (delta) => {
-
-  iceCreamText.text = `IceCream ${cat.iceCream.container?.constructor?.name}/${cat.iceCream.scoop?.constructor.name}/${cat.iceCream.topping?.constructor.name}`;
+    iceCreamText.text = `IceCream ${cat.iceCream.container?.constructor?.name}/${cat.iceCream.scoop?.constructor.name}/${cat.iceCream.topping?.constructor.name}`;
     if (anim.x < game.width / 2) {
       seconds += (1 / 60) * delta;
       anim.stop();
-      if (
-        (checkIceCream(cat)) ||
-        seconds > 3
-      ) {
-        catRunAway();
+      if (checkIceCream(cat) || seconds > 3) {
+        catRunAway(delta);
         return;
       }
       return;
+    }
+    if (anim.currentFrame == 0) {
+        anim.gotoAndPlay(1)
     }
     anim.play();
     anim.x -= speed;
@@ -262,7 +269,12 @@ async function start() {
 }
 
 const checkIceCream = (cat) => {
-    return cat.iceCream.container?.constructor.name === cat.iceCreamNeeded.container.constructor.name &&
-          cat.iceCream.scoop?.constructor.name === cat.iceCreamNeeded.scoop.constructor.name &&
-          cat.iceCream.topping?.constructor.name === cat.iceCreamNeeded.topping.constructor.name
-}
+  return (
+    cat.iceCream.container?.constructor.name ===
+      cat.iceCreamNeeded.container.constructor.name &&
+    cat.iceCream.scoop?.constructor.name ===
+      cat.iceCreamNeeded.scoop.constructor.name &&
+    cat.iceCream.topping?.constructor.name ===
+      cat.iceCreamNeeded.topping.constructor.name
+  );
+};
