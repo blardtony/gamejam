@@ -1,6 +1,6 @@
 {
 	"frames": {
-		"cat1.png": {
+		"chat1.png": {
 			"frame": {
 				"x": 1,
 				"y": 1,
@@ -20,7 +20,7 @@
 				"h": 777
 			}
 		},
-		"cat2.png": {
+		"chat2.png": {
 			"frame": {
 				"x": 780,
 				"y": 1,
@@ -40,7 +40,7 @@
 				"h": 777
 			}
 		},
-		"cat3.png": {
+		"chat3.png": {
 			"frame": {
 				"x": 1559,
 				"y": 1,
@@ -60,7 +60,7 @@
 				"h": 777
 			}
 		},
-		"cat4.png": {
+		"chat4.png": {
 			"frame": {
 				"x": 1,
 				"y": 780,
@@ -80,7 +80,7 @@
 				"h": 777
 			}
 		},
-		"cat5.png": {
+		"chat5.png": {
 			"frame": {
 				"x": 780,
 				"y": 780,
@@ -100,7 +100,7 @@
 				"h": 777
 			}
 		},
-		"cat6.png": {
+		"chat6.png": {
 			"frame": {
 				"x": 1559,
 				"y": 780,
@@ -120,7 +120,7 @@
 				"h": 777
 			}
 		},
-		"cat7.png": {
+		"chat7.png": {
 			"frame": {
 				"x": 1,
 				"y": 1559,
@@ -140,7 +140,7 @@
 				"h": 777
 			}
 		},
-		"cat8.png": {
+		"chat8.png": {
 			"frame": {
 				"x": 780,
 				"y": 1559,
@@ -160,7 +160,7 @@
 				"h": 777
 			}
 		},
-		"cat_afraid.png": {
+		"chat_afraid.png": {
 			"frame": {
 				"x": 1559,
 				"y": 1559,
@@ -182,17 +182,17 @@
 		}
 	},
 	"animations": {
-        "cats": ["cat_afraid.png", "cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png", "cat6.png", "cat7.png", "cat8.png"]
-    },
+		"cats": ["chat_afraid.png","chat1.png", "chat2.png", "chat3.png", "chat4.png", "chat5.png", "chat6.png", "chat7.png", "chat8.png"],
+	},
 	"meta": {
 		"app": "http://www.codeandweb.com/texturepacker",
 		"version": "1.0",
-		"image": "cats.png",
+		"image": "spritesheet.png",
 		"format": "RGBA8888",
 		"size": {
 			"w": 2337,
 			"h": 2337
 		},
-		"scale": "1"
+		"scale": "5"
 	}
 }

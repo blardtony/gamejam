@@ -36,7 +36,7 @@ body {
     color: #fff;
  }
 
- .game-content div {
+ .game-content > div {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -139,8 +139,13 @@ body {
 #game-over-button-group {
    display: flex;
    flex-direction: column;
+   align-items: center;
 }
 
 #game-over-button-group button {
    margin-bottom: 20px;
+}
+
+#game-win {
+   width: 600px;
 }
