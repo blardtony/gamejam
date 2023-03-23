@@ -156,7 +156,6 @@ body {
    background-repeat: no-repeat;
    background-position: center;
    background-size: auto 100%;
-
    animation: zoom 1.2s infinite;
 }
 
@@ -172,4 +171,12 @@ body {
    100% {
        transform: scale(1);
    }
+}
+
+#start-button {
+   max-width: 300px;
+   position: absolute;
+   top: 80%;
+   left: 50%;
+   transform: translate(-50%, -50%);
 }
