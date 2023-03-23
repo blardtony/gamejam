@@ -210,10 +210,12 @@ async function start() {
         anim.gotoAndStop(0);
         return
     }
-    if (seconds > 3.3 && anim.currentFrame == 0) {
+    if ((seconds > 3.3 || checkIceCream(cat))&& anim.currentFrame == 0) {
+        console.log(anim.currentFrame)
         anim.gotoAndPlay(1)
         return
     }
+    console.log(anim.currentFrame)
     anim.play();
     anim.x -= runSpeed;
   };
@@ -228,7 +230,7 @@ async function start() {
       seconds += (1 / 60) * delta;
       anim.stop();
       if (checkIceCream(cat) || seconds > 3) {
-        catRunAway(delta);
+        catRunAway();
         return;
       }
       return;
