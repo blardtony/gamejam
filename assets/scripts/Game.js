@@ -36,9 +36,9 @@ export class Game {
     resize = () => {
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
-        const minWidth = 400;
+        const minWidth = 300;
         /** Minimum screen height before the resizing function shrinks the view. */
-        const minHeight = 400;
+        const minHeight = 300;
     
         // Calculate renderer and canvas sizes based on current dimensions
         const scaleX = windowWidth < minWidth ? minWidth / windowWidth : 1;
