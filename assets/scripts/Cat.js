@@ -33,10 +33,8 @@ export class Cat {
         );
         // Generate all the Textures asynchronously
         await spritesheet.parse();
-
-        // spritesheet is ready to use!
-        console.log(spritesheet.animations.cats);
-        const anim=  new PIXI.AnimatedSprite(spritesheet.animations.cats);
+        
+        const anim =  new PIXI.AnimatedSprite(spritesheet.animations.cats);
         anim.x = this.x;
         anim.y = this.y;
         anim.anchor.set(0.5);

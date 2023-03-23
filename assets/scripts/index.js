@@ -89,7 +89,7 @@ async function start() {
   const coneBucket = new Bucket(
     "/assets/img/bunny.png",
     bucketSpace,
-    game.height - 150,
+    game.height - 80,
     Cone
   );
   game.app.stage.addChild(coneBucket.sprite);
@@ -97,7 +97,7 @@ async function start() {
   const cupBucket = new Bucket(
     "/assets/img/bunny.png",
     bucketSpace,
-    game.height - 300,
+    game.height - 180,
     Cup
   );
   game.app.stage.addChild(cupBucket.sprite);
@@ -105,7 +105,7 @@ async function start() {
   const vanillaBucket = new Bucket(
     "/assets/img/bunny.png",
     bucketSpace * 2,
-    game.height - 150,
+    game.height - 80,
     VanillaScoop
   );
   game.app.stage.addChild(vanillaBucket.sprite);
@@ -113,7 +113,7 @@ async function start() {
   const chocolateBucket = new Bucket(
     "/assets/img/bunny.png",
     bucketSpace * 2,
-    game.height - 300,
+    game.height - 180,
     ChocolateScoop
   );
   game.app.stage.addChild(chocolateBucket.sprite);
@@ -121,7 +121,7 @@ async function start() {
   const sprinklesBucket = new Bucket(
     "/assets/img/bunny.png",
     bucketSpace * 3,
-    game.height - 150,
+    game.height - 80,
     Sprinkles
   );
   game.app.stage.addChild(sprinklesBucket.sprite);
@@ -129,7 +129,7 @@ async function start() {
   const chocolateChipsBucket = new Bucket(
     "/assets/img/bunny.png",
     bucketSpace * 3,
-    game.height - 300,
+    game.height - 180,
     ChocolateChips
   );
   game.app.stage.addChild(chocolateChipsBucket.sprite);
