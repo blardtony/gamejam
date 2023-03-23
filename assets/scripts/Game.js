@@ -13,7 +13,6 @@ export class Game {
         this.app = new PIXI.Application({
             width: window.innerWidth,
             height: window.innerHeight,
-            backgroundColor: 0x522652,
             resolution: window.devicePixelRatio || 1,
         });
         this.width = window.innerWidth;
@@ -23,6 +22,12 @@ export class Game {
     init = () => {
         /* Setting the position of the canvas to absolute. */
         this.app.renderer.view.style.position = 'absolute';
+        const background = PIXI.Sprite.from('assets/img/background.png');
+        background.width = this.width;
+        background.height = this.height;
+
+        this.app.stage.addChild(background);
+
         /* Adding the canvas to the body of the HTML document. */
         this.resize();
         document.body.appendChild(this.app.view);

@@ -10,18 +10,19 @@ let score = 0;
 
 const scoreText = new PIXI.Text("Score: " + score, {
     fontFamily: "Arial",
-    fontSize: 24,
-    fill: "white",
+    fontSize: 48,
+    fill: "black",
     align: "center",
 });
 scoreText.x = game.width / 2 - scoreText.width / 2;
 scoreText.y = 50;
-game.app.stage.addChild(scoreText);
 
 /**
  * Initialize the game
  */
 game.init();
+
+game.app.stage.addChild(scoreText);
 
 /**
  * Resize the game
@@ -32,13 +33,14 @@ window.addEventListener("resize", () => {
 game.resize();
 
 /**
- * Get the game start and game over screens
+ * Get the game start and game over elements
  */
 const gameStart = document.querySelector("#game-start");
 const gameOver = document.querySelector("#game-over");
 const gameRetryButton = document.querySelector("#game-retry-button");
+
 /**
- * Start the game
+ * Add event listener to the game start button
  */
 gameStart.addEventListener("click", () => {
   gameStart.style.display = "none";
@@ -46,11 +48,16 @@ gameStart.addEventListener("click", () => {
     gameOver.style.display = "block";
     game.app.ticker.destroy();
   }, 10000);
+  /**
+   * Start the game
+   */
   start();
 });
 
 gameRetryButton.addEventListener("click", () => {
-    //Reload the page
+    /**
+     * Reload the page
+     */
     location.reload();
 });
 
