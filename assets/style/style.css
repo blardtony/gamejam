@@ -103,7 +103,7 @@ body {
 
  #game-over {
     display: none;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.75);
  }
 
  #game-hand {
@@ -147,5 +147,29 @@ body {
 }
 
 #game-win {
-   width: 600px;
+   max-width: 300px;
+}
+
+#cadre {
+   padding: 40px 30px;
+   background-image: url("../img/cadre.png");
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: auto 100%;
+
+   animation: zoom 1.2s infinite;
+}
+
+@keyframes zoom {
+   0% {
+       transform: scale(1);
+   }
+
+   50% {
+       transform: scale(1.1);
+   }
+
+   100% {
+       transform: scale(1);
+   }
 }

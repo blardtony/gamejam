@@ -182,7 +182,7 @@
 		}
 	},
 	"animations": {
-		"cats": ["chat_afraid.png","chat1.png", "chat2.png", "chat3.png", "chat4.png", "chat5.png", "chat6.png", "chat7.png", "chat8.png"],
+		"cats": ["chat_afraid.png","chat1.png", "chat2.png", "chat3.png", "chat4.png", "chat5.png", "chat6.png", "chat7.png", "chat8.png"]
 	},
 	"meta": {
 		"app": "http://www.codeandweb.com/texturepacker",
