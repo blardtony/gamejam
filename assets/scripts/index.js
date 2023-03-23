@@ -17,12 +17,21 @@ const scoreText = new PIXI.Text("Score: " + score, {
 scoreText.x = game.width / 2 - scoreText.width / 2;
 scoreText.y = 50;
 
+const iceCreamNeededText = new PIXI.Text("IceCream: ", {
+    fontFamily: "Arial",
+    fontSize: 25,
+    fill: "black",
+    align: "center",
+  });
+  iceCreamNeededText.x = 150;
+  iceCreamNeededText.y = 150;
 /**
  * Initialize the game
  */
 game.init();
 
 game.app.stage.addChild(scoreText);
+game.app.stage.addChild(iceCreamNeededText);
 
 /**
  * Resize the game
@@ -123,12 +132,17 @@ async function start() {
    * @param {Number} scale The scale of the cat.
    */
   let cat = new Cat(game.width / 1, game.height / 2, 0.1666);
-
+  /**
+   * The text that shows the ice cream needed.
+   * Parse the ice cream needed to a string.
+   */
   /**
    * The animation sprite of the cat.
    * @type {PIXI.AnimatedSprite}
    */
   let anim = await cat.getAnimationSprite();
+
+  iceCreamNeededText.text = `Container ${cat.iceCreamNeeded.container.constructor.name} Scoop ${cat.iceCreamNeeded.scoop.constructor.name} Topping ${cat.iceCreamNeeded.topping.constructor.name}`;
 
   /**
    * Play the animation.
@@ -178,6 +192,7 @@ async function start() {
       }
       cat = new Cat(game.width / 1, game.height / 2, 0.1666);
       anim = await cat.getAnimationSprite();
+      iceCreamNeededText.text = `Container ${cat.iceCreamNeeded.container.constructor.name} Scoop ${cat.iceCreamNeeded.scoop.constructor.name} Topping ${cat.iceCreamNeeded.topping.constructor.name}`;
       game.app.stage.addChild(anim);
       seconds = 0;
       return;
