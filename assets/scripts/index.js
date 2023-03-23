@@ -13,6 +13,7 @@ const scoreText = new PIXI.Text("Score: " + score, {
   fontSize: 48,
   fill: "black",
   align: "center",
+//   wordWrap: true,
 });
 scoreText.x = game.width / 2 - scoreText.width / 2;
 scoreText.y = 50;
@@ -22,6 +23,8 @@ const iceCreamNeededText = new PIXI.Text("IceCreamNeeded: ", {
   fontSize: 25,
   fill: "black",
   align: "center",
+  wordWrap: true,
+  wordWrapWidth: game.width -100
 });
 iceCreamNeededText.x = 80;
 iceCreamNeededText.y = 120;
@@ -31,9 +34,12 @@ const iceCreamText = new PIXI.Text("IceCream: ", {
   fontSize: 25,
   fill: "black",
   align: "center",
+  wordWrap: true,
+
+  wordWrapWidth: game.width - 100,
 });
 iceCreamText.x = 80;
-iceCreamText.y = 150;
+iceCreamText.y = 190;
 /**
  * Initialize the game
  */
@@ -50,6 +56,7 @@ game.app.stage.addChild(iceCreamText);
 const gameStart = document.querySelector("#game-start");
 const gameOver = document.querySelector("#game-over");
 const gameRetryButton = document.querySelector("#game-retry-button");
+const gameDownloadButton = document.querySelector("#game-download-button");
 
 /**
  * Add event listener to the game start button
@@ -71,6 +78,13 @@ gameRetryButton.addEventListener("click", () => {
    * Reload the page
    */
   location.reload();
+});
+
+/**
+ * Add event listener to the game download button
+ */
+gameDownloadButton.addEventListener("click", () => {
+    window.location.replace('https://epita-gamma.13h37.io/store.html');
 });
 
 /**
@@ -186,9 +200,11 @@ async function start() {
    */
 
   const catRunAway = async () => {
-    if (anim.x < -100) {
+    if (anim.x < -200) {
       anim.stop();
       if (checkIceCream(cat)) {
+        const soundValid = PIXI.sound.Sound.from('assets/valide.ogg');
+        soundValid.play();
         score += 1;
         scoreText.text = "Score: " + score;
       }
@@ -203,9 +219,12 @@ async function start() {
         anim.gotoAndStop(0);
         return
     }
-    if ((seconds > 3.3 || checkIceCream(cat))&& anim.currentFrame == 0) {
-        console.log(anim.currentFrame)
-        anim.gotoAndPlay(1)
+    if ((seconds > 3.3 && !checkIceCream(cat)) && (anim.currentFrame == 0 || anim.currentFrame <= 4)) {
+        anim.gotoAndPlay(5)
+        return
+    }
+    if(checkIceCream(cat) && anim.currentFrame > 4){
+        anim.gotoAndPlay(1);
         return
     }
     console.log(anim.currentFrame)
@@ -230,6 +249,9 @@ async function start() {
     }
     if (anim.currentFrame == 0) {
         anim.gotoAndPlay(1)
+    }
+    if (anim.currentFrame <= 4) {
+        anim.gotoAndPlay(5)
     }
     anim.play();
     anim.x -= speed;

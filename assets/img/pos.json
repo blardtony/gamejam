@@ -1,6 +1,6 @@
 {
 	"frames": {
-		"po1.png": {
+		"po5.png": {
 			"frame": {
 				"x": 1,
 				"y": 1,
@@ -20,10 +20,90 @@
 				"h": 777
 			}
 		},
-		"po2.png": {
+		"po6.png": {
 			"frame": {
 				"x": 780,
 				"y": 1,
+				"w": 777,
+				"h": 777
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 777,
+				"h": 777
+			},
+			"sourceSize": {
+				"w": 777,
+				"h": 777
+			}
+		},
+		"po7.png": {
+			"frame": {
+				"x": 1559,
+				"y": 1,
+				"w": 777,
+				"h": 777
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 777,
+				"h": 777
+			},
+			"sourceSize": {
+				"w": 777,
+				"h": 777
+			}
+		},
+		"po8.png": {
+			"frame": {
+				"x": 1,
+				"y": 780,
+				"w": 777,
+				"h": 777
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 777,
+				"h": 777
+			},
+			"sourceSize": {
+				"w": 777,
+				"h": 777
+			}
+		},
+		"po1.png": {
+			"frame": {
+				"x": 780,
+				"y": 780,
+				"w": 777,
+				"h": 777
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 777,
+				"h": 777
+			},
+			"sourceSize": {
+				"w": 777,
+				"h": 777
+			}
+		},
+		"po2.png": {
+			"frame": {
+				"x": 1559,
+				"y": 780,
 				"w": 777,
 				"h": 777
 			},
@@ -43,7 +123,7 @@
 		"po3.png": {
 			"frame": {
 				"x": 1,
-				"y": 780,
+				"y": 1559,
 				"w": 777,
 				"h": 777
 			},
@@ -63,7 +143,7 @@
 		"po4.png": {
 			"frame": {
 				"x": 780,
-				"y": 780,
+				"y": 1559,
 				"w": 777,
 				"h": 777
 			},
@@ -83,7 +163,7 @@
 		"po_afraid.png": {
 			"frame": {
 				"x": 1559,
-				"y": 1,
+				"y": 1559,
 				"w": 777,
 				"h": 777
 			},
@@ -102,16 +182,16 @@
 		}
 	},
 	"animations": {
-        "cats": ["po_afraid.png", "po1.png","po2.png", "po3.png", "po4.png"]
+        "cats": ["po_afraid.png", "po1.png", "po2.png", "po3.png", "po4.png", "po5.png", "po6.png", "po7.png", "po8.png"]
     },
 	"meta": {
 		"app": "http://www.codeandweb.com/texturepacker",
 		"version": "1.0",
-		"image": "po_2.png",
+		"image": "pos.png",
 		"format": "RGBA8888",
 		"size": {
 			"w": 2337,
-			"h": 1558
+			"h": 2337
 		},
 		"scale": "5"
 	}
