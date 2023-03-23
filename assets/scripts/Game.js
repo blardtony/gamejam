@@ -11,25 +11,25 @@
 export class Game {
     constructor() {
         this.app = new PIXI.Application({
-            width: window.innerWidth,
-            height: window.innerHeight,
-            resolution: window.devicePixelRatio || 1,
+            width: window.innerHeight * 0.69,
+            height: window.innerHeight
         });
-        this.width = window.innerWidth;
+        this.width = window.innerHeight * 0.69;
         this.height = window.innerHeight;
     }
 
     init = () => {
         /* Setting the position of the canvas to absolute. */
         this.app.renderer.view.style.position = 'absolute';
+        this.app.renderer.view.style.display = 'block';
         const background = PIXI.Sprite.from('assets/img/background.png');
-        background.width = this.width;
-        background.height = this.height;
-
+        background.width = this.app.screen.width;
+        background.height = this.app.screen.height;
+        this.app.renderer.view.style.left = `${(window.innerWidth - this.app.screen.width) / 2}px`;
         this.app.stage.addChild(background);
 
         /* Adding the canvas to the body of the HTML document. */
-        this.resize();
+        // this.resize();
         document.body.appendChild(this.app.view);
     }
 

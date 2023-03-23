@@ -43,13 +43,6 @@ game.app.stage.addChild(scoreText);
 game.app.stage.addChild(iceCreamNeededText);
 game.app.stage.addChild(iceCreamText);
 
-/**
- * Resize the game
- */
-window.addEventListener("resize", () => {
-  game.resize();
-});
-game.resize();
 
 /**
  * Get the game start and game over elements
