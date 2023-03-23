@@ -9,10 +9,10 @@ const game = new Game();
 let score = 0;
 
 const scoreText = new PIXI.Text("Score: " + score, {
-    fontFamily: "Arial",
-    fontSize: 48,
-    fill: "black",
-    align: "center",
+  fontFamily: "Arial",
+  fontSize: 48,
+  fill: "black",
+  align: "center",
 });
 scoreText.x = game.width / 2 - scoreText.width / 2;
 scoreText.y = 50;
@@ -55,10 +55,10 @@ gameStart.addEventListener("click", () => {
 });
 
 gameRetryButton.addEventListener("click", () => {
-    /**
-     * Reload the page
-     */
-    location.reload();
+  /**
+   * Reload the page
+   */
+  location.reload();
 });
 
 /**
@@ -188,14 +188,14 @@ async function start() {
 
   let seconds = 0;
   const catReachMiddle = async (delta) => {
-    // console.log(anim.x)
+    console.log(cat.iceCreamNeeded.container.constructor.name);
     if (anim.x < game.width / 2) {
       seconds += (1 / 60) * delta;
       anim.stop();
       if (
-        (cat.iceCream.container &&
-          cat.iceCream.scoop &&
-          cat.iceCream.topping) ||
+        (cat.iceCream.container?.constructor.name == cat.iceCreamNeeded.container.constructor.name &&
+          cat.iceCream.scoop?.constructor.name == cat.iceCreamNeeded.scoop.constructor.name &&
+          cat.iceCream.topping?.constructor.name== cat.iceCreamNeeded.topping.constructor.name) ||
         seconds > 3
       ) {
         catRunAway();

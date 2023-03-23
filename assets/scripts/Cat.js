@@ -1,11 +1,22 @@
 import { IceCream } from "./IceCream.js";
+import { VanillaScoop, ChocolateScoop } from "./Scoop.js";
+import { Cone, Cup } from "./Container.js";
+import { ChocolateChips, Sprinkles } from "./Topping.js";
 
 export class Cat {
     constructor(x, y, animationSpeed) {
         this.x = x;
         this.y = y;
         this.animationSpeed = animationSpeed;
+        const container = [new Cone(), new Cup()];
+        const scoop = [new VanillaScoop(), new ChocolateScoop()];
+        const topping = [new ChocolateChips(), new Sprinkles()];
         this.iceCream = new IceCream();
+
+        this.iceCreamNeeded = new IceCream();
+        this.iceCreamNeeded.addContainer(container[Math.floor(Math.random() * 1000) % 2]);
+        this.iceCreamNeeded.addScoop(scoop[Math.floor(Math.random() * 1000) % 2]);
+        this.iceCreamNeeded.addTopping(topping[Math.floor(Math.random() * 1000) % 2]);
     }
 
     async getAnimationSprite() {
