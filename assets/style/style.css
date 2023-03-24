@@ -62,7 +62,7 @@ body {
    width: 400px;
 }
 
-#game-download-button {
+.game-download-button {
    background-image: url('../img/cloud1.png');
    background-repeat: no-repeat;
    background-position: center;
@@ -70,7 +70,7 @@ body {
    opacity:0.8;
 }
 
-#game-download-button:hover {
+.game-download-button:hover {
    background-image: url('../img/cloud1.png');
    opacity:1;
 
@@ -179,4 +179,17 @@ body {
    top: 80%;
    left: 50%;
    transform: translate(-50%, -50%);
+}
+
+
+#download-menu img {
+   position: absolute;
+   bottom: 1%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 100;
+   max-width: 150px;
+   animation: zoom 0.8s infinite;
+   cursor: pointer;
+   display: none;
 }

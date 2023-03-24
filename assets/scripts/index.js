@@ -56,7 +56,7 @@ game.app.stage.addChild(iceCreamText);
 const gameStart = document.querySelector("#game-start");
 const gameOver = document.querySelector("#game-over");
 const gameRetryButton = document.querySelector("#game-retry-button");
-const gameDownloadButton = document.querySelector("#game-download-button");
+const gameDownloadButton = document.querySelector(".game-download-button");
 
 /**
  * Add event listener to the game start button
@@ -92,6 +92,7 @@ gameDownloadButton.addEventListener("click", () => {
  */
 async function start() {
     const sound = PIXI.sound.Sound.from('assets/sound.wav');
+    sound.volume = 0.2;
     sound.play();
   const bucketSpace = game.width / 4;
 
