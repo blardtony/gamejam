@@ -13,16 +13,55 @@
             background-color: black;
         }
         .background {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        .relative {
+            position: relative;
         }
         .team {
             width: auto;
             height: 100vh;
             object-fit: cover;
             height: 100hv;
-            /* width: 100%; */
+        }
+        .team_img {
+            position: absolute;
+            width: 250px;
+            top: 25%;
+            right: 5%;
+        }
+        .karim {
+            position: absolute;
+            width: 200px;
+            top: 30%;
+            right: 5%;
+        }
+        .aure {
+            position: absolute;
+            width: 200px;
+            top: 30%;
+            left: 10%;
+        }
+        .ro {
+            position: absolute;
+            width: 200px;
+            top: 65%;
+            left: 65%;
+        }
+        .toto {
+            position: absolute;
+            width: 200px;
+            top: 65%;
+            left: 35%;
+        }
+        .marie {
+            position: absolute;
+            width: 200px;
+            top: 65%;
+            left: 5%;
         }
     </style>
 </head>
@@ -30,7 +69,15 @@
     <div class="content">
         <!-- <img src="assets/img/team.png" class="team" /> -->
         <div class="background">
-                <img src="assets/img/team.png" class="team" />
+            <div class="relative">
+                <img src="assets/img/background.png" class="team" />
+                <img src="assets/img/teams_img.png" class="team_img" />
+                <img src="assets/img/karim.png" class="karim" />
+                <img src="assets/img/aure.png" class="aure" />
+                <img src="assets/img/ro.png" class="ro" />
+                <img src="assets/img/toto.png" class="toto" />
+                <img src="assets/img/marie.png" class="marie" />
+            </div>
         </div>
     </div>
 
