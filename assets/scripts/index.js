@@ -121,11 +121,11 @@ async function start() {
   game.app.stage.addChild(coneBucket.sprite);
 
   const cupBucket = new Bucket(
-    "/assets/img/bunny.png",
-    bucketSpace * 3,
-    game.height - 210,
+    "/assets/img/cup.png",
+    bucketSpace * 2.7,
+    game.height - 190,
     Cup,
-    2
+    0.5
   );
   game.app.stage.addChild(cupBucket.sprite);
 
