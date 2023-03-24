@@ -152,10 +152,10 @@ body {
 
 #cadre {
    padding: 40px 30px;
-   background-image: url("../img/cadre.png");
+   /* background-image: url("../img/cadre.png");
    background-repeat: no-repeat;
    background-position: center;
-   background-size: auto 100%;
+   background-size: auto 100%; */
    animation: zoom 1.2s infinite;
 }
 

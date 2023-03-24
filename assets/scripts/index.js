@@ -10,8 +10,9 @@ let score = 0;
 
 const stand = PIXI.Sprite.from('/assets/img/stand.png');
 stand.x = 0; 
-stand.y = game.height - 220;
+stand.y = game.height - 350;
 stand.width = game.width;
+stand.height = 350;
 stand.scale.set(0.2);
 
 const scoreText = new PIXI.Text("Score: " + score, {
@@ -24,16 +25,6 @@ const scoreText = new PIXI.Text("Score: " + score, {
 scoreText.x = game.width / 2 - scoreText.width / 2;
 scoreText.y = 50;
 
-const iceCreamNeededText = new PIXI.Text("IceCreamNeeded: ", {
-  fontFamily: "Arial",
-  fontSize: 25,
-  fill: "black",
-  align: "center",
-  wordWrap: true,
-  wordWrapWidth: game.width -100
-});
-iceCreamNeededText.x = 80;
-iceCreamNeededText.y = 120;
 
 const iceCreamText = new PIXI.Text("IceCream: ", {
   fontFamily: "Arial",
@@ -53,7 +44,6 @@ game.init();
 
 game.app.stage.addChild(stand);
 game.app.stage.addChild(scoreText);
-game.app.stage.addChild(iceCreamNeededText);
 game.app.stage.addChild(iceCreamText);
 
 
@@ -99,7 +89,7 @@ gameDownloadButton.addEventListener("click", () => {
  */
 async function start() {
     const sound = PIXI.sound.Sound.from('assets/sound.wav');
-    sound.volume = 0.2;
+    sound.volume = 0.3;
     sound.play();
   const bucketSpace = game.width / 4;
   
@@ -124,7 +114,7 @@ async function start() {
   const coneBucket = new Bucket(
     "/assets/img/cone.png",
     bucketSpace * 3,
-    game.height - 110,
+    game.height - 120,
     Cone,
     0.4
   );
@@ -141,8 +131,8 @@ async function start() {
 
   const vanillaBucket = new Bucket(
     "/assets/img/vanilla.png",
-    bucketSpace * 1.5,
-    game.height - 130,
+    bucketSpace * 1.75,
+    game.height - 170,
     VanillaScoop,
     0.3
   );
@@ -151,7 +141,7 @@ async function start() {
   const chocolateBucket = new Bucket(
     "/assets/img/chocolat.png",
     bucketSpace,
-    game.height - 130,
+    game.height - 170,
     ChocolateScoop,
     0.3
   );
@@ -177,7 +167,6 @@ async function start() {
    */
   let anim = await cat.getAnimationSprite();
 
-  iceCreamNeededText.text = `IceCreamNeeded ${cat.iceCreamNeeded.container.constructor.name}/${cat.iceCreamNeeded.scoop.constructor.name}/${cat.iceCreamNeeded.topping.constructor.name}`;
   iceCreamText.text = `IceCream ${cat.iceCream.container?.constructor?.name}/${cat.iceCream.scoop?.constructor.name}/${cat.iceCream.topping?.constructor.name}`;
 
   /**
@@ -210,13 +199,21 @@ async function start() {
   const speed = distance / (1 * 60);
 
   const runSpeed = distance / (0.8 * 60);
-
+  await cat.getSpriteIceCream()
+  game.app.stage.addChild(cat.iceCreamSprite);
+  cat.iceCreamSprite.scale.set(0.2);
+  cat.iceCreamSprite.x = game.width / 2;
+  cat.iceCreamSprite.y = 300;
+  cat.iceCreamSprite.visible = false;
+  // console.log(cat.iceCreamSprite)
   /**
    * The animation loop.
    */
 
   const catRunAway = async () => {
+    // console.log(cat.iceCreamSprite)
     if (anim.x < -200) {
+
       anim.stop();
       if (checkIceCream(cat)) {
         const soundValid = PIXI.sound.Sound.from('assets/valide.ogg');
@@ -226,7 +223,6 @@ async function start() {
       }
       cat = new Cat(game.width / 1, game.height / 2, 0.1666);
       anim = await cat.getAnimationSprite();
-      iceCreamNeededText.text = `Container ${cat.iceCreamNeeded.container.constructor.name} Scoop ${cat.iceCreamNeeded.scoop.constructor.name} Topping ${cat.iceCreamNeeded.topping.constructor.name}`;
       game.app.stage.addChild(anim);
       seconds = 0;
       return;
@@ -255,9 +251,13 @@ async function start() {
     }
     iceCreamText.text = `IceCream ${cat.iceCream.container?.constructor?.name}/${cat.iceCream.scoop?.constructor.name}/${cat.iceCream.topping?.constructor.name}`;
     if (anim.x < game.width / 2) {
+      cat.iceCreamSprite.visible = true;
+      cat.iceCreamSprite.x = anim.x;
+      cat.iceCreamSprite.y = anim.y - 150;
       seconds += (1 / 60) * delta;
       anim.stop();
       if (checkIceCream(cat) || seconds > 3) {
+        cat.iceCreamSprite.visible = false;
         catRunAway();
         return;
       }

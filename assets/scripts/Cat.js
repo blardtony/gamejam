@@ -25,6 +25,7 @@ export class Cat {
         this.iceCreamNeeded.addContainer(container[Math.floor(Math.random() * 1000) % 2]);
         this.iceCreamNeeded.addScoop(scoop[Math.floor(Math.random() * 1000) % 2]);
         this.iceCreamNeeded.addTopping(topping[Math.floor(Math.random() * 1000) % 2]);
+        this.iceCreamSprite = null;
     }
 
     async getAnimationSprite() {
@@ -48,6 +49,16 @@ export class Cat {
         anim.anchor.set(0.5);
         anim.animationSpeed = 0.1666;
         return anim;
+    }
+
+    async getSpriteIceCream() {
+        if ((this.iceCream.container?.constructor.name === 'Cone'
+            && this.iceCream.scoop?.constructor.name === 'VanillaScoop'
+            && this.iceCream.topping?.constructor.name === 'ChocolateChips')
+            || 1 == 1) {
+            this.iceCreamSprite = await PIXI.Sprite.from('assets/img/cone_cho_pepite.png');
+        }
+        this.iceCreamSprite = await PIXI.Sprite.from('assets/img/cone_cho_pepite.png');
     }
 
 }
