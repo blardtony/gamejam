@@ -47,8 +47,32 @@ export class Cat {
       this.iceCreamNeeded.topping?.constructor.name === "ChocolateChips"
     ) {
       this.iceCreamSprite = PIXI.Sprite.from("assets/img/cup_va_pepite.png");
-    }else {
-        this.iceCreamSprite = PIXI.Sprite.from("assets/img/cone_va_pepite.png");
+    } else if (
+      this.iceCreamNeeded.container?.constructor.name === "Cone" &&
+      this.iceCreamNeeded.scoop?.constructor.name === "VanillaScoop" &&
+      this.iceCreamNeeded.topping?.constructor.name === "Sprinkles"
+    ) {
+      this.iceCreamSprite = PIXI.Sprite.from("assets/img/cup_va_spr.png");
+    } else if (
+      this.iceCreamNeeded.container?.constructor.name === "Cone" &&
+      this.iceCreamNeeded.scoop?.constructor.name === "ChocolateScoop" &&
+      this.iceCreamNeeded.topping?.constructor.name === "Sprinkles"
+    ) {
+      this.iceCreamSprite = PIXI.Sprite.from("assets/img/cone_cho_spr.png");
+    } else if (
+      this.iceCreamNeeded.container?.constructor.name === "Cup" &&
+      this.iceCreamNeeded.scoop?.constructor.name === "ChocolateScoop" &&
+      this.iceCreamNeeded.topping?.constructor.name === "Sprinkles"
+    ) {
+      this.iceCreamSprite = PIXI.Sprite.from("assets/img/cup_cho_spr.png");
+    } else if (
+      this.iceCreamNeeded.container?.constructor.name === "Cup" &&
+      this.iceCreamNeeded.scoop?.constructor.name === "ChocolateScoop" &&
+      this.iceCreamNeeded.topping?.constructor.name === "Sprinkles"
+    ) {
+      this.iceCreamSprite = PIXI.Sprite.from("assets/img/cup_cho_spr.png");
+    } else {
+      this.iceCreamSprite = PIXI.Sprite.from("assets/img/cup_cho_pepite.png");
     }
     console.log(
       this.iceCreamNeeded.container?.constructor.name,
@@ -56,10 +80,10 @@ export class Cat {
       this.iceCreamNeeded.topping?.constructor.name,
       this.iceCreamNeeded.container?.constructor.name === "Cone"
     );
-    
-    this.iceCreamSprite.scale.set(0.2);
+
+    this.iceCreamSprite.scale.set(0.35);
     this.iceCreamSprite.x = x;
-    this.iceCreamSprite.y = 300;
+    this.iceCreamSprite.y = 100;
     this.iceCreamSprite.visible = false;
   }
 

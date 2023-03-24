@@ -10,9 +10,9 @@ let score = 0;
 
 const stand = PIXI.Sprite.from('/assets/img/stand.png');
 stand.x = 0; 
-stand.y = game.height - 350;
+stand.y = game.height - 300;
 stand.width = game.width;
-stand.height = 350;
+stand.height = 300;
 stand.scale.set(0.2);
 
 const scoreText = new PIXI.Text("Score: " + score, {
@@ -26,17 +26,6 @@ scoreText.x = game.width / 2 - scoreText.width / 2;
 scoreText.y = 50;
 
 
-const iceCreamText = new PIXI.Text("IceCream: ", {
-  fontFamily: "Arial",
-  fontSize: 25,
-  fill: "black",
-  align: "center",
-  wordWrap: true,
-
-  wordWrapWidth: game.width - 100,
-});
-iceCreamText.x = 80;
-iceCreamText.y = 190;
 /**
  * Initialize the game
  */
@@ -44,7 +33,6 @@ game.init();
 
 game.app.stage.addChild(stand);
 game.app.stage.addChild(scoreText);
-game.app.stage.addChild(iceCreamText);
 
 
 /**
@@ -94,36 +82,36 @@ async function start() {
   const bucketSpace = game.width / 4;
   
   const sprinklesBucket = new Bucket(
-    "/assets/img/bunny.png",
-    bucketSpace * 1.5,
-    game.height - 230,
+    "/assets/img/456.png",
+    bucketSpace * 2.9,
+    game.height - 120,
     Sprinkles,
-    2
+    0.25
   );
   game.app.stage.addChild(sprinklesBucket.sprite);
 
   const chocolateChipsBucket = new Bucket(
-    "/assets/img/bunny.png",
-    bucketSpace,
-    game.height - 230,
+    "/assets/img/123.png",
+    bucketSpace * 2.9,
+    game.height - 210,
     ChocolateChips,
-    2
+    0.25
   );
   game.app.stage.addChild(chocolateChipsBucket.sprite);
 
   const coneBucket = new Bucket(
     "/assets/img/cone.png",
-    bucketSpace * 3,
+    bucketSpace * .45,
     game.height - 120,
     Cone,
-    0.4
+    0.35
   );
   game.app.stage.addChild(coneBucket.sprite);
 
   const cupBucket = new Bucket(
     "/assets/img/cup.png",
-    bucketSpace * 2.7,
-    game.height - 190,
+    bucketSpace * .45,
+    game.height - 210,
     Cup,
     0.5
   );
@@ -131,7 +119,7 @@ async function start() {
 
   const vanillaBucket = new Bucket(
     "/assets/img/vanilla.png",
-    bucketSpace * 1.75,
+    bucketSpace * 1.95,
     game.height - 170,
     VanillaScoop,
     0.3
@@ -140,7 +128,7 @@ async function start() {
 
   const chocolateBucket = new Bucket(
     "/assets/img/chocolat.png",
-    bucketSpace,
+    bucketSpace * 1.25,
     game.height - 170,
     ChocolateScoop,
     0.3
@@ -167,7 +155,6 @@ async function start() {
    */
   let anim = await cat.getAnimationSprite();
 
-  iceCreamText.text = `IceCream ${cat.iceCream.container?.constructor?.name}/${cat.iceCream.scoop?.constructor.name}/${cat.iceCream.topping?.constructor.name}`;
 
   /**
    * Play the animation.
@@ -249,11 +236,10 @@ async function start() {
     if (!sound.isPlaying){
         sound.play();
     }
-    iceCreamText.text = `IceCream ${cat.iceCream.container?.constructor?.name}/${cat.iceCream.scoop?.constructor.name}/${cat.iceCream.topping?.constructor.name}`;
     if (anim.x < game.width / 2) {
       cat.iceCreamSprite.visible = true;
       cat.iceCreamSprite.x = anim.x;
-      cat.iceCreamSprite.y = anim.y - 150;
+      cat.iceCreamSprite.y = anim.y - 200;
       seconds += (1 / 60) * delta;
       anim.stop();
       if (checkIceCream(cat) || seconds > 3) {
