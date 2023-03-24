@@ -113,7 +113,7 @@ async function start() {
     bucketSpace * .45,
     game.height - 210,
     Cup,
-    0.5
+    0.4
   );
   game.app.stage.addChild(cupBucket.sprite);
 
