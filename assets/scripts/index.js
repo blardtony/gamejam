@@ -199,12 +199,9 @@ async function start() {
   const speed = distance / (1 * 60);
 
   const runSpeed = distance / (0.8 * 60);
-  await cat.getSpriteIceCream()
+  // await cat.getSpriteIceCream();
   game.app.stage.addChild(cat.iceCreamSprite);
-  cat.iceCreamSprite.scale.set(0.2);
-  cat.iceCreamSprite.x = game.width / 2;
-  cat.iceCreamSprite.y = 300;
-  cat.iceCreamSprite.visible = false;
+
   // console.log(cat.iceCreamSprite)
   /**
    * The animation loop.
@@ -222,8 +219,11 @@ async function start() {
         scoreText.text = "Score: " + score;
       }
       cat = new Cat(game.width / 1, game.height / 2, 0.1666);
+
+      // await cat.getSpriteIceCream();
       anim = await cat.getAnimationSprite();
       game.app.stage.addChild(anim);
+      game.app.stage.addChild(cat.iceCreamSprite);
       seconds = 0;
       return;
     }
@@ -239,7 +239,7 @@ async function start() {
         anim.gotoAndPlay(1);
         return
     }
-    console.log(anim.currentFrame)
+    // console.log(anim.currentFrame)
     anim.play();
     anim.x -= runSpeed;
   };
