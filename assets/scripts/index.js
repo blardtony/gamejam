@@ -8,6 +8,12 @@ import { Bucket } from "./Bucket.js";
 const game = new Game();
 let score = 0;
 
+const stand = PIXI.Sprite.from('/assets/img/stand.png');
+stand.x = 0; 
+stand.y = game.height - 220;
+stand.width = game.width;
+stand.scale.set(0.2);
+
 const scoreText = new PIXI.Text("Score: " + score, {
   fontFamily: "Arial",
   fontSize: 48,
@@ -45,6 +51,7 @@ iceCreamText.y = 190;
  */
 game.init();
 
+game.app.stage.addChild(stand);
 game.app.stage.addChild(scoreText);
 game.app.stage.addChild(iceCreamNeededText);
 game.app.stage.addChild(iceCreamText);
@@ -95,54 +102,62 @@ async function start() {
     sound.volume = 0.2;
     sound.play();
   const bucketSpace = game.width / 4;
-
-  const coneBucket = new Bucket(
-    "/assets/img/bunny.png",
-    bucketSpace,
-    game.height - 80,
-    Cone
-  );
-  game.app.stage.addChild(coneBucket.sprite);
-
-  const cupBucket = new Bucket(
-    "/assets/img/bunny.png",
-    bucketSpace,
-    game.height - 180,
-    Cup
-  );
-  game.app.stage.addChild(cupBucket.sprite);
-
-  const vanillaBucket = new Bucket(
-    "/assets/img/bunny.png",
-    bucketSpace * 2,
-    game.height - 80,
-    VanillaScoop
-  );
-  game.app.stage.addChild(vanillaBucket.sprite);
-
-  const chocolateBucket = new Bucket(
-    "/assets/img/bunny.png",
-    bucketSpace * 2,
-    game.height - 180,
-    ChocolateScoop
-  );
-  game.app.stage.addChild(chocolateBucket.sprite);
-
+  
   const sprinklesBucket = new Bucket(
     "/assets/img/bunny.png",
-    bucketSpace * 3,
-    game.height - 80,
-    Sprinkles
+    bucketSpace * 1.5,
+    game.height - 230,
+    Sprinkles,
+    2
   );
   game.app.stage.addChild(sprinklesBucket.sprite);
 
   const chocolateChipsBucket = new Bucket(
     "/assets/img/bunny.png",
-    bucketSpace * 3,
-    game.height - 180,
-    ChocolateChips
+    bucketSpace,
+    game.height - 230,
+    ChocolateChips,
+    2
   );
   game.app.stage.addChild(chocolateChipsBucket.sprite);
+
+  const coneBucket = new Bucket(
+    "/assets/img/bunny.png",
+    bucketSpace * 3,
+    game.height - 210,
+    Cone,
+    2
+  );
+  game.app.stage.addChild(coneBucket.sprite);
+
+  const cupBucket = new Bucket(
+    "/assets/img/cone.png",
+    bucketSpace * 3,
+    game.height - 110,
+    Cup,
+    0.4
+  );
+  game.app.stage.addChild(cupBucket.sprite);
+
+  const vanillaBucket = new Bucket(
+    "/assets/img/vanilla.png",
+    bucketSpace * 1.5,
+    game.height - 130,
+    VanillaScoop,
+    0.3
+  );
+  game.app.stage.addChild(vanillaBucket.sprite);
+
+  const chocolateBucket = new Bucket(
+    "/assets/img/chocolat.png",
+    bucketSpace,
+    game.height - 130,
+    ChocolateScoop,
+    0.3
+  );
+  game.app.stage.addChild(chocolateBucket.sprite);
+
+  
 
   /**
    * The cat object
