@@ -122,20 +122,20 @@ async function start() {
   game.app.stage.addChild(chocolateChipsBucket.sprite);
 
   const coneBucket = new Bucket(
-    "/assets/img/bunny.png",
+    "/assets/img/cone.png",
     bucketSpace * 3,
-    game.height - 210,
+    game.height - 110,
     Cone,
-    2
+    0.4
   );
   game.app.stage.addChild(coneBucket.sprite);
 
   const cupBucket = new Bucket(
-    "/assets/img/cone.png",
+    "/assets/img/bunny.png",
     bucketSpace * 3,
-    game.height - 110,
+    game.height - 210,
     Cup,
-    0.4
+    2
   );
   game.app.stage.addChild(cupBucket.sprite);
 
